@@ -6,7 +6,6 @@
 package com.hm.registropersonawarapiapp.dao;
 
 import com.hm.registropersonawarapiapp.entities.Genero;
-import com.hm.registropersonawarapiapp.entities.NacionalidadPersona;
 import com.hm.registropersonawarapiapp.entities.Pais;
 import com.hm.registropersonawarapiapp.entities.Persona;
 import com.hm.registropersonawarapiapp.entities.TipoIdentificacion;
@@ -76,7 +75,6 @@ public class PersonaDAO {
 
     public boolean insertPerson(Persona persona) {
         log.info("Inicio del metodo insertPerson de PersonaDAO");
-        NacionalidadPersona nacionalidadPersona = new NacionalidadPersona();
         boolean respuesta;
 
         Genero genero = generoDAO.getrByGener(persona.getIdGenero());
@@ -100,11 +98,6 @@ public class PersonaDAO {
         
 
         try {
-            List<NacionalidadPersona> lNacionalidadPersona = new ArrayList<>();
-            nacionalidadPersona.setIdPais(pais);
-            nacionalidadPersona.setIdPersona(persona);
-            lNacionalidadPersona.add(nacionalidadPersona);
-            persona.setNacionalidadPersonaList(lNacionalidadPersona);
             em.persist(persona);
             respuesta = true;
             log.info("Fin del metodo insertPerson de PersonaDAO");

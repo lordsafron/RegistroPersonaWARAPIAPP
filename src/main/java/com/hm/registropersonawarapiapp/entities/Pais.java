@@ -42,8 +42,6 @@ public class Pais implements Serializable {
     @Size(max = 50)
     @Column(name = "nombre_pais")
     private String nombrePais;
-    @OneToMany(mappedBy = "idPais")
-    private List<NacionalidadPersona> nacionalidadPersonaList;
 
     public Pais() {
     }
@@ -74,15 +72,6 @@ public class Pais implements Serializable {
 
     public void setNombrePais(String nombrePais) {
         this.nombrePais = nombrePais;
-    }
-
-    @XmlTransient
-    public List<NacionalidadPersona> getNacionalidadPersonaList() {
-        return nacionalidadPersonaList;
-    }
-
-    public void setNacionalidadPersonaList(List<NacionalidadPersona> nacionalidadPersonaList) {
-        this.nacionalidadPersonaList = nacionalidadPersonaList;
     }
 
     @Override
